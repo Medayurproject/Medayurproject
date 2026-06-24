@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+const path = require("path");
 const paymentRoutes = require("./routes/paymentRoutes");
 const connectDB = require("./config/db");
 
@@ -36,7 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 // Example:
 // http://localhost:5000/images/products/p1.jpg
 // ===============================
-app.use("/images", express.static("images"));
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 
 // ===============================
@@ -52,8 +53,10 @@ app.use("/api/payment", paymentRoutes);
 // ===============================
 // HOME ROUTE
 // ===============================
+app.use(express.static(__dirname));
+
 app.get("/", (req, res) => {
-  res.send("MEDAYUR Backend Running Successfully 🚀");
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 
