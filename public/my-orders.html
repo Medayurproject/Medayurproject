@@ -93,7 +93,8 @@ async function loadOrders(){
  const token = localStorage.getItem("token");
 
  const res = await fetch(
- "http://localhost:5000/api/orders/my-orders",{
+"https://medayurproject.onrender.com/api/orders/my-orders"
+,{
 
    headers:{
      authorization: token

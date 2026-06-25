@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 // ===============================
 // STATIC FILES (Images)
 // Example:
-// http://localhost:5000/images/products/p1.jpg
+// https://medayurproject.onrender.com/images/products/p1.jpg
 // ===============================
 app.use("/images", express.static(path.join(__dirname, "images")));
 
@@ -64,7 +64,7 @@ app.get("/", (req, res) => {
 // ===============================
 // TEMP TEST ROUTE (Add Product)
 // Open:
-// http://localhost:5000/test-add
+// https://medayurproject.onrender.com/test-add
 // ===============================
 app.get("/test-add", async (req, res) => {
   try {

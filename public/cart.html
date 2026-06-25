@@ -324,7 +324,7 @@ total += item.price * item.quantity;
 total = total-discount;
 
 const res = await fetch(
-"http://localhost:5000/api/payment/create-order",{
+"https://medayurproject.onrender.com/api/payment/create-order",{
 
 method:"POST",
 
@@ -354,8 +354,7 @@ order_id: order.id,
 
 handler: async function(){
 
-fetch(
-"http://localhost:5000/api/orders/create",{
+fetch("https://medayurproject.onrender.com/api/orders/create", {
 
 method:"POST",
 

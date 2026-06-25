@@ -233,7 +233,7 @@ let allProducts = [];
 async function loadProducts(){
 
   const res =
-  await fetch("http://localhost:5000/api/products");
+  await fetch("https://medayurproject.onrender.com/api/products");
 
   const products = await res.json();
 
@@ -285,7 +285,7 @@ OUT OF STOCK
 </div>`
 : ""}
 
-<img src="http://localhost:5000${product.image}">
+<img src="https://medayurproject.onrender.com${product.image}">
 
 <h4>${product.name}</h4>
 
@@ -361,7 +361,7 @@ function addToCart(product){
       _id: product._id,
       name: product.name,
       price: product.price,
-      image: "http://localhost:5000" + product.image,
+      image: "https://medayurproject.onrender.com" + product.image,
       quantity: 1
 
    });
