@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MEDAYUR Shopping Cart</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Poppins',sans-serif;
+background:#f6f8f7;
+padding:40px;
+}
+
+.page-title{
+font-size:42px;
+font-weight:700;
+margin-bottom:40px;
+color:#1d1d1d;
+}
+
+.cart-card{
+background:white;
+border-radius:18px;
+padding:20px;
+margin-bottom:20px;
+box-shadow:0 5px 18px rgba(0,0,0,.08);
+display:flex;
+align-items:center;
+gap:20px;
+transition:0.3s;
+}
+
+.cart-card:hover{
+transform:translateY(-5px);
+}
+
+.cart-card img{
+width:120px;
+height:120px;
+object-fit:cover;
+border-radius:12px;
+}
+
+.product-info{
+flex:1;
+}
+
+.product-name{
+font-size:22px;
+font-weight:600;
+}
+
+.price{
+font-size:22px;
+font-weight:700;
+color:#2e7d32;
+}
+
+.old-price{
+text-decoration:line-through;
+color:#777;
+margin-left:10px;
+font-size:15px;
+}
+
+.qty-box{
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:12px;
+}
+
+.qty-btn{
+width:35px;
+height:35px;
+border:none;
+background:#2e7d32;
+color:white;
+border-radius:8px;
+font-size:18px;
+}
+
+.remove-btn{
+border:none;
+background:#e53935;
+color:white;
+padding:10px 18px;
+border-radius:10px;
+margin-top:15px;
+}
+
+.summary{
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 5px 18px rgba(0,0,0,.08);
+margin-top:30px;
+}
+
+.checkout-btn{
+width:100%;
+padding:16px;
+border:none;
+background:linear-gradient(135deg,#2e7d32,#43a047);
+color:white;
+font-size:18px;
+font-weight:600;
+border-radius:12px;
+margin-top:20px;
+}
+
+.coupon{
+padding:12px;
+width:100%;
+border:1px solid #ddd;
+border-radius:10px;
+margin-top:15px;
+}
+
+.empty{
+text-align:center;
+padding:80px;
+font-size:22px;
+color:#666;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="page-title">🛒 Your Shopping Cart</h1>
+
+<div id="cart-items"></div>
+
+<div class="summary">
+
+<h4>Total Amount: <span id="total">₹0</span></h4>
+
+<input 
+type="text" 
+id="coupon"
+class="coupon"
+placeholder="Enter Coupon Code">
+
+<button onclick="applyCoupon()" class="checkout-btn">
+Apply Coupon
+</button>
+
+<button onclick="checkout()" class="checkout-btn">
+Proceed To Checkout
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+let discount = 0;
+
+function loadCart(){
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+if(cart.length===0){
+
+document.getElementById("cart-items").innerHTML=
+`<div class="empty">
+Your Cart Is Empty 😔
+</div>`;
+
+document.getElementById("total").innerText="₹0";
+return;
+}
+
+let html="";
+let total=0;
+
+cart.forEach((item,index)=>{
+
+if(!item.quantity){
+item.quantity=1;
+}
+
+total += item.price * item.quantity;
+
+let oldPrice = item.price + 100;
+
+html += `
+
+<div class="cart-card">
+
+<img src="${item.image}">
+
+<div class="product-info">
+
+<div class="product-name">${item.name}</div>
+
+<div class="price">
+
+₹${item.price}
+
+<span class="old-price">
+₹${oldPrice}
+</span>
+
+</div>
+
+<div class="qty-box">
+
+<button class="qty-btn"
+onclick="changeQty(${index},-1)">-</button>
+
+<span>${item.quantity}</span>
+
+<button class="qty-btn"
+onclick="changeQty(${index},1)">+</button>
+
+</div>
+
+<button
+class="remove-btn"
+onclick="removeItem(${index})">
+
+Remove
+
+</button>
+
+</div>
+
+</div>
+`;
+});
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+total = total-discount;
+
+document.getElementById("cart-items").innerHTML=html;
+
+document.getElementById("total").innerText="₹"+total;
+}
+
+function changeQty(index,value){
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+cart[index].quantity += value;
+
+if(cart[index].quantity<1){
+cart[index].quantity=1;
+}
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+loadCart();
+}
+
+function removeItem(index){
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+cart.splice(index,1);
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+loadCart();
+}
+
+function applyCoupon(){
+
+let code=document.getElementById("coupon").value;
+
+if(code==="SAVE10"){
+
+discount=100;
+
+alert("Coupon Applied ₹100 Off");
+
+}else{
+
+alert("Invalid Coupon");
+
+}
+
+loadCart();
+}
+
+
+async function checkout(){
+
+const token = localStorage.getItem("token");
+
+if(!token){
+
+alert("Please Login First");
+
+window.location="login.html";
+
+return;
+}
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let total=0;
+
+cart.forEach(item=>{
+
+total += item.price * item.quantity;
+
+});
+
+total = total-discount;
+
+const res = await fetch(
+"http://localhost:5000/api/payment/create-order",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body: JSON.stringify({
+amount: total
+})
+
+});
+
+const order = await res.json();
+
+const options = {
+
+key:"YOUR_RAZORPAY_KEY",
+
+amount: order.amount,
+
+currency:"INR",
+
+name:"MEDAYUR",
+
+order_id: order.id,
+
+handler: async function(){
+
+fetch(
+"http://localhost:5000/api/orders/create",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json",
+authorization: token
+},
+
+body: JSON.stringify({
+
+items: cart,
+
+totalAmount: total
+
+})
+
+});
+
+alert("Payment Successful");
+
+localStorage.removeItem("cart");
+
+window.location.reload();
+
+}
+
+};
+
+const rzp = new Razorpay(options);
+
+rzp.open();
+}
+
+loadCart();
+
+</script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+</body>
+</html>

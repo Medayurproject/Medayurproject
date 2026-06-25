@@ -1,0 +1,33 @@
+[
+ {
+   "id":1,
+   "name":"Ashwagandha Capsules",
+   "price":299,
+   "category":"Immunity",
+   "image":"images/products/p1.jpg"
+ },
+
+ {
+   "id":2,
+   "name":"Triphala Churna",
+   "price":199,
+   "category":"Digestion",
+   "image":"images/products/p2.jpg"
+ },
+
+ {
+   "id":3,
+   "name":"Neem Capsules",
+   "price":249,
+   "category":"Skin",
+   "image":"images/products/p3.jpg"
+ },
+
+ {
+   "id":4,
+   "name":"Giloy Juice",
+   "price":349,
+   "category":"Immunity",
+   "image":"images/products/p4.jpg"
+ }
+]

@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MEDAYUR | Premium Ayurvedic Wellness Store</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+  
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#fefdf7;
+overflow-x:hidden;
+}
+
+body{
+background:#fefdf7;
+overflow-x:hidden;
+padding-top:85px;   /* navbar ke liye space */
+}
+
+/* TOP BAR */
+
+.top-bar{
+background:#2e7d32;
+color:white;
+padding:8px 0;
+font-size:14px;
+font-weight:500;
+overflow:hidden;
+white-space:nowrap;
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+}
+
+.top-bar p{
+display:inline-block;
+padding-left:100%;
+animation:scrollText 18s linear infinite;
+margin:0;
+}
+
+@keyframes scrollText{
+0%{transform:translateX(0);}
+100%{transform:translateX(-100%);}
+}
+
+/* NAVBAR */
+
+.navbar{
+background:#ffffff;
+box-shadow:0 2px 15px rgba(0,0,0,0.08);
+padding:15px 0;
+position:fixed;
+top: 38px;
+left:0;
+width:100%;
+z-index:999;
+}
+
+.navbar-brand img{
+height:55px;
+width:auto;
+}
+
+.navbar-nav li{
+margin-left:25px;
+}
+
+.navbar-nav a{
+color:#333 !important;
+font-weight:500;
+transition:.3s;
+}
+
+.navbar-nav a:hover{
+color:#2e7d32 !important;
+}
+
+/* SEARCH */
+
+.search-box{
+position:relative;
+margin-left:40px;
+}
+
+.search-box input{
+width:300px;
+padding:10px 20px;
+border-radius:30px;
+border:1px solid #ddd;
+outline:none;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+url('images/banner1.jpg');
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+text-align:center;
+color:white;
+padding:180px 20px 40px 20px;
+}
+
+.hero-content h1{
+font-size:62px;
+font-weight:700;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:20px;
+margin-bottom:30px;
+max-width:700px;
+margin:auto;
+margin-bottom:30px;
+}
+
+.hero-btn{
+background:#d4af37;
+padding:15px 35px;
+border:none;
+border-radius:50px;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.hero-btn:hover{
+transform:scale(1.05);
+}
+
+/* SECTION */
+
+.section-title{
+text-align:center;
+font-size:38px;
+font-weight:700;
+margin-top:80px;
+margin-bottom:50px;
+color:#1f1f1f;
+}
+
+/* CATEGORY */
+
+.category-card{
+background:white;
+padding:25px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 3px 12px rgba(0,0,0,.08);
+transition:.3s;
+cursor:pointer;
+}
+
+.category-card:hover{
+transform:translateY(-10px);
+box-shadow:0 15px 30px rgba(0,0,0,.15);
+transition:0.3s;
+}
+
+.category-card img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:20px;
+transition:0.4s;
+}
+
+.category-card:hover img{
+transform:scale(1.06);
+}
+
+/* PRODUCT */
+
+.product-card{
+background:white;
+padding:15px;
+border-radius:16px;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+border:1px solid #eee;
+overflow:hidden;
+transition:0.3s;
+position:relative;
+margin-bottom:25px;
+}
+
+.product-card:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.product-image{
+height:260px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#fafafa;
+border-radius:12px;
+overflow:hidden;
+}
+
+.product-card img{
+max-width:100%;
+max-height:230px;
+object-fit:contain;
+transition:0.3s;
+}
+
+.product-card:hover img{
+transform:scale(1.05);
+}
+
+.discount-badge{
+position:absolute;
+top:15px;
+left:15px;
+background:#2e7d32;
+color:white;
+padding:5px 10px;
+font-size:12px;
+border-radius:5px;
+}
+
+.product-card h4{
+font-size:20px;
+margin-top:15px;
+}
+
+.price{
+font-size:22px;
+font-weight:700;
+color:#2e7d32;
+}
+
+.old-price{
+text-decoration:line-through;
+font-size:14px;
+color:#777;
+margin-left:10px;
+}
+
+.rating{
+color:#ff9800;
+margin:10px 0;
+}
+
+.cart-btn{
+width:100%;
+padding:14px;
+border:none;
+background:#2e7d32;
+color:white;
+border-radius:12px;
+font-weight:600;
+cursor:pointer;
+transition:all .25s ease;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.cart-btn:hover{
+transform:scale(1.03);
+}
+
+.cart-btn:active{
+transform:scale(.97);
+}
+
+/* ABOUT */
+
+.about{
+padding:100px 0;
+background:#fffef7;
+}
+
+.about img{
+width:100%;
+border-radius:20px;
+}
+
+.about-content h2{
+font-size:42px;
+font-weight:700;
+margin-bottom:25px;
+}
+
+.about-content p{
+font-size:17px;
+line-height:1.8;
+color:#555;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:991px){
+
+.search-box{
+display:none;
+}
+
+.hero-content h1{
+font-size:42px;
+}
+
+.hero{
+height:75vh;
+}
+
+}
+
+.hero-btn{
+display:inline-block;
+padding:16px 36px;
+background:linear-gradient(135deg,#2e7d32,#43a047);
+color:white;
+text-decoration:none;
+font-weight:600;
+border-radius:50px;
+box-shadow:0 8px 20px rgba(46,125,50,.25);
+transition:all .3s ease;
+}
+
+.hero-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 12px 28px rgba(46,125,50,.35);
+}
+
+.cart-count{
+position:absolute;
+top:-6px;
+right:-8px;
+background:#e53935;
+width:20px;
+height:20px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:11px;
+font-weight:700;
+}
+
+.product-card{
+transition:all .3s ease;
+overflow:hidden;
+}
+
+.product-card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 30px rgba(0,0,0,.12);
+}
+
+.product-card img{
+transition:transform .4s ease;
+}
+
+.product-card:hover img{
+transform:scale(1.05);
+}
+
+.buy-btn{
+width:100%;
+padding:14px;
+border:none;
+background:#d4af37;
+color:#111;
+font-weight:600;
+border-radius:12px;
+cursor:pointer;
+}
+
+.mobile-bar{
+position:fixed;
+bottom:0;
+width:100%;
+background:white;
+display:flex;
+justify-content:space-around;
+padding:15px;
+box-shadow:0 -2px 10px rgba(0,0,0,.08);
+z-index:999;
+}
+
+.mobile-bar a{
+text-decoration:none;
+color:#222;
+font-weight:600;
+}
+
+.filter-btn{
+padding:12px 30px;
+margin:8px;
+border:none;
+background:#f4c542;
+border-radius:30px;
+font-weight:600;
+cursor:pointer;
+width:auto;
+transition:0.3s;
+}
+
+.filter-btn:hover{
+background:#2e7d32;
+color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- TOP BAR -->
+
+<div class="top-bar">
+<p>
+🚚 Free Shipping Above ₹499 &nbsp;&nbsp;&nbsp;
+🌿 100% Natural Ayurvedic Products &nbsp;&nbsp;&nbsp;
+🔒 Secure Payments &nbsp;&nbsp;&nbsp;
+🚚 Free Shipping Above ₹499 &nbsp;&nbsp;&nbsp;
+🌿 100% Natural Ayurvedic Products
+</p>
+</div>
+
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg">
+
+<div class="container">
+
+<a class="navbar-brand" href="#">
+<img src="images/logo.png" alt="MEDAYUR">
+</a>
+
+
+<div class="search-box">
+<input
+type="text"
+id="searchInput"
+placeholder="Search Ayurvedic Products..."
+onkeyup="searchProducts()">
+</div>
+
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+
+<div class="collapse navbar-collapse" id="nav">
+
+<ul class="navbar-nav ms-auto">
+
+<li><a class="nav-link" href="#">Home</a></li>
+
+<li><a class="nav-link" href="#">Shop</a></li>
+
+<li><a class="nav-link" href="#">About</a></li>
+
+<li><a class="nav-link" href="#">Contact</a></li>
+
+<li id="loginArea">
+<a class="nav-link" href="login.html">Login</a>
+</li>
+
+<li>
+<a class="nav-link" href="my-orders.html">
+My Orders
+</a>
+</li>
+
+<li style="position:relative;">
+
+<a class="nav-link" href="cart.html">
+
+🛒 Cart
+
+<span id="cart-count" class="cart-count">0</span>
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Ancient Ayurveda For Modern Healthy Life</h1>
+
+<p>
+Premium Ayurvedic wellness products crafted with pure herbal ingredients
+to improve your immunity, digestion and complete lifestyle naturally.
+</p>
+
+<a href="products.html" class="hero-btn">
+  Shop Now →
+</a>
+
+</div>
+
+</section>
+<!-- CATEGORY SECTION -->
+
+<section class="container mt-5">
+<div class="row g-4">
+
+<div class="col-md-4">
+
+<a href="immunity.html" style="text-decoration:none;color:black;">
+
+<div class="category-card">
+</div>
+</Section>
+<img src="images/immunity.jpg">
+
+<h5>🌿 Immunity Booster</h5>
+
+<p>
+Best Ayurvedic herbs to naturally improve body immunity and strength.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<div class="col-md-4">
+
+<a href="digestion.html" style="text-decoration:none;color:black;">
+
+<div class="category-card">
+
+<img src="images/digestion.jpg">
+
+<h5>🍃 Digestion Care</h5>
+
+<p>
+Improve stomach health and digestion naturally with herbal formulas.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<div class="col-md-4">
+
+<a href="skin.html" style="text-decoration:none;color:black;">
+
+<div class="category-card">
+
+<img src="images/skin.jpg">
+
+<h5>✨ Skin & Hair Care</h5>
+
+<p>
+Natural herbal beauty products for glowing skin and healthy hair.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- BEST SELLERS -->
+
+<section class="container">
+
+<h2 class="section-title">Best Seller Products</h2>
+
+<div style="text-align:center;margin-bottom:40px;">
+
+<button onclick="filterCategory('all')" class="filter-btn">All</button>
+
+<button onclick="filterCategory('Immunity')" class="filter-btn">Immunity</button>
+
+<button onclick="filterCategory('Digestion')" class="filter-btn">Digestion</button>
+
+<button onclick="filterCategory('Skin')" class="filter-btn">Skin Care</button>
+
+</div>
+
+<div class="row g-4" id="products-list">
+
+</div>
+
+
+</section>
+
+
+
+
+<!-- ABOUT BRAND -->
+
+<section class="about">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-md-6">
+
+<img src="images/about.jpg">
+
+</div>
+
+
+<div class="col-md-6">
+
+<div class="about-content">
+
+<h2>Trusted Ayurvedic Wellness Since Tradition</h2>
+
+<p>
+
+At MEDAYUR, we believe true healing begins with nature.
+
+Our carefully formulated Ayurvedic products combine ancient herbal science
+with modern quality standards to deliver wellness solutions trusted by thousands.
+
+Every product is crafted using pure ingredients to support immunity,
+energy, digestion, skin care and a healthier lifestyle.
+
+</p>
+
+<a href="about.html" class="hero-btn">
+  Read More →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<!-- WHY CHOOSE US -->
+
+<section class="container">
+
+<h2 class="section-title">Why Choose MEDAYUR</h2>
+
+<div class="row text-center g-4">
+
+
+<div class="col-md-3">
+
+<div class="category-card">
+
+<h1>🌿</h1>
+
+<h5>100% Natural</h5>
+
+<p>Pure herbal ingredients with no harmful chemicals</p>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-3">
+
+<div class="category-card">
+
+<h1>🚚</h1>
+
+<h5>Fast Delivery</h5>
+
+<p>Quick shipping available all across India</p>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-3">
+
+<div class="category-card">
+
+<h1>🔒</h1>
+
+<h5>Secure Payments</h5>
+
+<p>Protected checkout with safe payment gateway</p>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-3">
+
+<div class="category-card">
+
+<h1>⭐</h1>
+
+<h5>Premium Quality</h5>
+
+<p>Trusted quality standards and authentic Ayurveda</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section class="container mt-5">
+
+<h2 class="section-title">Health & Wellness Blog</h2>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+
+<a href="blog-immunity.html" style="text-decoration:none;color:black;">
+
+<div class="category-card">
+
+<img src="images/blog1.jpg">
+
+<h5>5 Herbs To Boost Immunity Naturally</h5>
+
+<p>Learn how Tulsi, Giloy and Ashwagandha improve immunity.</p>
+
+<div class="hero-btn">Read More</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+<div class="col-md-4">
+
+<a href="blog-digestion.html" style="text-decoration:none;color:black;">
+
+<div class="category-card">
+
+<img src="images/blog2.jpg">
+
+<h5>Ayurvedic Digestion Secrets</h5>
+
+<p>Simple herbal remedies to improve digestion naturally.</p>
+
+<div class="hero-btn">Read More</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+<div class="col-md-4">
+
+<a href="blog-skin.html" style="text-decoration:none;color:black;">
+
+<div class="category-card">
+
+<img src="images/blog3.jpg">
+
+<h5>Natural Skin & Hair Care Guide</h5>
+
+<p>Use Ayurveda for glowing skin and stronger hair.</p>
+
+<div class="hero-btn">Read More</div>
+
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section class="container">
+
+<h2 class="section-title">Happy Customers</h2>
+
+<div class="row g-4">
+
+
+<div class="col-md-4">
+
+<div class="category-card">
+
+<h4>★★★★★</h4>
+
+<p>
+
+Excellent quality products. I have been using Ashwagandha capsules
+for 3 months and results are amazing.
+
+</p>
+
+<h6>— Priya Sharma</h6>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-4">
+
+<div class="category-card">
+
+<h4>★★★★★</h4>
+
+<p>
+
+Very genuine Ayurvedic products and delivery was super fast.
+Packaging quality was also excellent.
+
+</p>
+
+<h6>— Rahul Verma</h6>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-4">
+
+<div class="category-card">
+
+<h4>★★★★★</h4>
+
+<p>
+
+Best herbal wellness products I found online.
+Will definitely order again.
+
+</p>
+
+<h6>— Sneha Patil</h6>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+<!-- FAQ SECTION -->
+
+<section class="container mb-5">
+
+<h2 class="section-title">Frequently Asked Questions</h2>
+
+<div class="accordion" id="faqAccordion">
+
+<div class="accordion-item">
+<h2 class="accordion-header">
+<button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq1">
+Are MEDAYUR products 100% natural?
+</button>
+</h2>
+
+<div id="faq1" class="accordion-collapse collapse show">
+<div class="accordion-body">
+Yes. All our products are carefully formulated using authentic Ayurvedic herbs and natural ingredients.
+</div>
+</div>
+</div>
+
+
+<div class="accordion-item">
+<h2 class="accordion-header">
+<button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq2">
+How long does shipping take?
+</button>
+</h2>
+
+<div id="faq2" class="accordion-collapse collapse">
+<div class="accordion-body">
+Delivery usually takes 3–7 business days depending on location.
+</div>
+</div>
+</div>
+
+
+<div class="accordion-item">
+<h2 class="accordion-header">
+<button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq3">
+Do you offer Cash on Delivery?
+</button>
+</h2>
+
+<div id="faq3" class="accordion-collapse collapse">
+<div class="accordion-body">
+Yes. Cash on Delivery is available on selected locations across India.
+</div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- HEALTH BLOG SECTION -->
+
+<section class="container mt-5">
+
+<div class="row g-4">
+
+<div class="col-md-4">
+  <a href="blog-immunity.html" style="text-decoration:none;color:black;">
+    <div class="category-card">
+      <img src="images/blog1.jpg" alt="Blog 1">
+      <h5>5 Herbs To Boost Immunity Naturally</h5>
+      <p>Learn how Tulsi improves immunity naturally.</p>
+      <span class="hero-btn">Read More</span>
+    </div>
+  </a>
+</div>
+
+<div class="col-md-4">
+  <a href="blog-digestion.html" style="text-decoration:none;color:black;">
+    <div class="category-card">
+      <img src="images/blog2.jpg" alt="Blog 2">
+      <h5>Ayurvedic Digestion Secrets</h5>
+      <p>Improve digestion naturally with herbs.</p>
+      <span class="hero-btn">Read More</span>
+    </div>
+  </a>
+</div>
+
+<div class="col-md-4">
+  <a href="blog-skin.html" style="text-decoration:none;color:black;">
+    <div class="category-card">
+      <img src="images/blog3.jpg" alt="Blog 3">
+      <h5>Natural Skin & Hair Care Guide</h5>
+      <p>Healthy skin and hair using Ayurveda.</p>
+      <span class="hero-btn">Read More</span>
+    </div>
+  </a>
+</div>
+
+</div>
+</section>
+
+</section>
+
+<!-- NEWSLETTER -->
+
+<section style="background:#2e7d32;padding:80px 20px;margin-top:80px;">
+
+<div class="container text-center text-white">
+
+<h2 style="font-size:42px;font-weight:700;">Get Wellness Tips & Exclusive Offers</h2>
+
+<p style="margin-top:20px;font-size:18px;">
+Subscribe to receive updates on new herbal products and premium offers.
+</p>
+
+<div style="margin-top:30px;max-width:600px;margin:auto;">
+
+<input
+type="email"
+placeholder="Enter your email address"
+style="
+width:70%;
+padding:15px;
+border:none;
+outline:none;
+border-radius:50px;
+">
+
+<button
+style="
+padding:15px 30px;
+border:none;
+background:#d4af37;
+border-radius:50px;
+font-weight:600;
+margin-left:10px;
+">
+
+Subscribe
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- INSTAGRAM GALLERY -->
+
+<!-- HEALTH BLOG SECTION -->
+
+<section class="container mt-5">
+
+<h2 class="section-title">Health & Wellness Blog</h2>
+
+<div class="row g-4">
+
+<!-- BLOG 1 -->
+
+<div class="col-md-4">
+
+<a href="blog-immunity.html"
+style="text-decoration:none;color:black;">
+
+<div class="category-card">
+
+<img src="images/blog1.jpg">
+
+<h5>🌿 5 Herbs To Boost Immunity Naturally</h5>
+
+<p>
+Learn how Tulsi, Giloy and Ashwagandha improve immunity naturally.
+</p>
+
+<span class="hero-btn">Read More</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+<!-- BLOG 2 -->
+
+<div class="col-md-4">
+
+<a href="blog-digestion.html"
+style="text-decoration:none;color:black;">
+
+<div class="category-card">
+
+<img src="images/blog2.jpg">
+
+<h5>🍃 Ayurvedic Digestion Secrets</h5>
+
+<p>
+Simple herbal remedies to improve digestion and gut health naturally.
+</p>
+
+<span class="hero-btn">Read More</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+<!-- BLOG 3 -->
+
+<div class="col-md-4">
+
+<a href="blog-skin.html"
+style="text-decoration:none;color:black;">
+
+<div class="category-card">
+
+<img src="images/blog3.jpg">
+
+<h5>✨ Natural Skin & Hair Care Guide</h5>
+
+<p>
+Use Ayurveda for glowing skin and stronger healthy hair naturally.
+</p>
+
+<span class="hero-btn">Read More</span>
+
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="container">
+
+<h2 class="section-title">Follow Our Herbal Journey</h2>
+
+<div class="row g-4">
+
+<div class="col-md-3">
+<img src="images/gallery1.jpg" class="img-fluid rounded">
+</div>
+
+<div class="col-md-3">
+<img src="images/gallery2.jpg" class="img-fluid rounded">
+</div>
+
+<div class="col-md-3">
+<img src="images/gallery3.jpg" class="img-fluid rounded">
+</div>
+
+<div class="col-md-3">
+<img src="images/gallery4.jpg" class="img-fluid rounded">
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer style="
+background:#111;
+color:white;
+padding:70px 20px;
+margin-top:100px;
+">
+
+<div class="container">
+
+<div class="row">
+
+
+<div class="col-md-4">
+
+<h3>MEDAYUR</h3>
+
+<p style="line-height:1.8;margin-top:20px;">
+
+Premium Ayurvedic wellness products made using
+ancient herbal science and modern quality standards.
+
+</p>
+
+</div>
+
+
+
+<div class="col-md-2">
+
+<h5>Quick Links</h5>
+
+<p><a href="#" style="color:#ccc;text-decoration:none;">Home</a></p>
+
+<p><a href="#" style="color:#ccc;text-decoration:none;">Shop</a></p>
+
+<p><a href="#" style="color:#ccc;text-decoration:none;">About</a></p>
+
+<p><a href="#" style="color:#ccc;text-decoration:none;">Contact</a></p>
+
+</div>
+
+
+
+<div class="col-md-3">
+
+<h5>Policies</h5>
+
+<p><a href="privacy-policy.html" style="color:#ccc;text-decoration:none;">Privacy Policy</a></p>
+
+<p><a href="refund-policy.html" style="color:#ccc;text-decoration:none;">Refund-Policy</a></p>
+
+<p><a href="shipping-policy.html" style="color:#ccc;text-decoration:none;">Shipping-Policy</a></p>
+
+<p><a href="terms.html" style="color:#ccc;text-decoration:none;">Terms & Conditions</a></p>
+
+</div>
+
+
+
+<div class="col-md-3">
+
+<h5>Contact Us</h5>
+
+<p>Email: support@medayur.com</p>
+
+<p>Phone: +91 7045400220</p>
+
+<p>India</p>
+
+</div>
+
+
+</div>
+
+
+<hr style="margin:40px 0;">
+
+
+<div style="text-align:center;">
+
+© 2026 MEDAYUR. All Rights Reserved.
+
+</div>
+
+</div>
+
+</footer>
+
+<div class="mobile-bar">
+
+<a href="index.html">Home</a>
+
+<a href="products.html">Shop</a>
+
+<a href="cart.html">Cart</a>
+
+</div>
+
+
+<!-- BOOTSTRAP -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="css/js/search.js"></script>
+
+<!-- SMOOTH SCROLL -->
+
+<script>
+
+
+
+
+function updateCartCount(){
+
+ let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+ document.getElementById("cart-count").innerText = cart.length;
+
+}
+
+
+loadProducts();
+
+updateCartCount();
+
+</script>
+
+<script>
+
+let allProducts = [];
+
+// Load Products From Backend
+async function loadProducts(){
+
+ const res = await fetch("https://medayurproject.onrender.com/api/products");
+
+ const data = await res.json();
+
+ allProducts = data;
+
+ showProducts(data);
+}
+
+
+// Show Products
+function showProducts(products){
+
+ let html = "";
+
+ products.forEach(product => {
+
+html += `
+
+<div class="col-md-3">
+
+<div class="product-card">
+
+<div class="product-image">
+
+<img 
+src="https://medayurproject.onrender.com${product.image}"
+onclick="window.open('https://medayurproject.onrender.com${product.image}')"
+style="height:220px; width:100%; object-fit:contain; cursor:pointer;">
+
+</div>
+
+<h5>${product.name}</h5>
+
+<p>₹${product.price}</p>
+
+<button onclick='addToCart(${JSON.stringify(product)})'
+class="buy-btn">
+
+Add To Cart
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+ });
+
+ document.getElementById("products-list").innerHTML = html;
+}
+
+
+// Filter Category
+function filterCategory(category){
+
+ if(category === "all"){
+
+   showProducts(allProducts);
+
+ } else {
+
+   let filtered = allProducts.filter(
+     p => p.category === category
+   );
+
+   showProducts(filtered);
+ }
+
+}
+
+function searchProducts(){
+
+ let keyword = document
+   .getElementById("searchInput")
+   .value
+   .toLowerCase();
+
+ console.log("Searching:", keyword);
+
+ let filtered = allProducts.filter(product =>
+
+   product.name.toLowerCase().includes(keyword) ||
+
+   product.category.toLowerCase().includes(keyword)
+
+ );
+
+ console.log("Filtered:", filtered);
+
+ showProducts(filtered);
+}
+
+// Add To Cart
+function addToCart(product){
+
+ let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+ cart.push({
+   name: product.name,
+   price: product.price,
+   image: "https://medayurproject.onrender.com" + product.image
+ });
+
+ localStorage.setItem("cart", JSON.stringify(cart));
+
+ updateCartCount();   // ADD THIS LINE
+
+ alert("Added To Cart");
+}
+
+
+// Start Loading
+loadProducts();
+updateCartCount();
+
+</script>
+
+<script>
+
+function checkLogin(){
+
+ let user = JSON.parse(localStorage.getItem("user"));
+
+ if(user){
+
+   document.getElementById("loginArea").innerHTML = `
+   
+   <a class="nav-link" href="#" onclick="logoutUser()">
+   Logout
+   </a>
+   
+   `;
+
+ }
+
+}
+
+function logoutUser(){
+
+ localStorage.removeItem("user");
+
+ alert("Logged Out");
+
+ window.location.reload();
+
+}
+
+checkLogin();
+
+</script>
+
+</body>
+</html>
