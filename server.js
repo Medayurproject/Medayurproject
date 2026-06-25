@@ -71,6 +71,7 @@ app.get("/test-add", async (req, res) => {
     const product = await Product.create({
       name: "Ashwagandha Capsules",
       price: 299,
+      mrp: 399,
       image: "/images/products/p1.jpg",
       category: "Immunity",
       description: "Natural Ayurvedic Product",
