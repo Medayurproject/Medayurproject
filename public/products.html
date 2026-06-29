@@ -289,6 +289,12 @@ OUT OF STOCK
 
 <h4>${product.name}</h4>
 
+${product.description ? `
+<p style="margin-top:10px;color:#555;">
+${product.description}
+</p>
+` : ""}
+
 <div class="rating">
 ${"★".repeat(product.rating || 5)}
 </div>
@@ -297,11 +303,39 @@ ${"★".repeat(product.rating || 5)}
 ₹${product.price}
 </span>
 
-${product.oldPrice ?
-`<span class="old-price">
-₹${product.oldPrice}
-</span>`
-: ""}
+${product.ingredients && product.ingredients.length ? `
+<p><b>Ingredients:</b> ${product.ingredients.join(", ")}</p>
+` : ""}
+
+${product.information ? `
+<p><b>Information:</b> ${product.information}</p>
+` : ""}
+
+${product.description ? `
+<p style="margin-top:10px;color:#555;">
+${product.description}
+</p>
+` : ""}
+
+${product.oldPrice ? `
+<div>
+<span class="old-price">MRP ₹${product.oldPrice}</span>
+</div>
+` : ""}
+
+${product.ingredients ? `
+<p>
+<b>Ingredients:</b><br>
+${product.ingredients}
+</p>
+` : ""}
+
+${product.information ? `
+<p>
+<b>Information:</b><br>
+${product.information}
+</p>
+` : ""}
 
 <br><br>
 

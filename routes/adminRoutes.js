@@ -27,17 +27,65 @@ router.post(
 
     try {
 
-      const product = await Product.create({
+const product = await Product.create({
 
-        name: req.body.name,
-        price: req.body.price,
-        mrp: req.body.price,
-        image: "/images/products/" + req.file.filename,
-        category: "General",
-        stock: 10,
-        rating: 5
+  name: req.body.name,
 
-      });
+  slug: req.body.slug,
+
+  category: req.body.category || "General",
+
+  brand: req.body.brand || "MEDAYUR",
+
+  image: "/images/products/" + req.file.filename,
+
+  gallery: [],
+
+  price: Number(req.body.price),
+
+  oldPrice: Number(req.body.oldPrice || 0),
+
+  mrp: Number(req.body.mrp || req.body.oldPrice || req.body.price),
+
+  description: req.body.description || "",
+
+  ingredients: req.body.ingredients
+    ? req.body.ingredients.split(",")
+    : [],
+
+  benefits: req.body.benefits
+    ? req.body.benefits.split(",")
+    : [],
+
+  usage: req.body.usage || "",
+
+  information: req.body.information || "",
+
+  dosage: req.body.dosage || "",
+
+  sideEffects: req.body.sideEffects || "",
+
+  weight: req.body.weight || "",
+
+  quantity: req.body.quantity || "",
+
+  stock: Number(req.body.stock || 0),
+
+  soldOut: Number(req.body.stock || 0) <= 0,
+
+  rating: Number(req.body.rating || 5),
+
+  reviews: Number(req.body.reviews || 0),
+
+  featured: req.body.featured === "true",
+
+  bestSeller: req.body.bestSeller === "true",
+
+  newArrival: req.body.newArrival === "true",
+
+  isActive: true
+
+});
 
       res.json({
         success:true,

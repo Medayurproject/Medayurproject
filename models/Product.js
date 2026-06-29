@@ -2,65 +2,140 @@ const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
 
-  name:{
-    type:String,
-    required:true
+  name: {
+    type: String,
+    required: true,
+    trim: true
   },
 
-  slug:{
-    type:String
+  slug: {
+    type: String,
+    unique: true,
+    sparse: true
   },
 
-  price:{
-    type:Number,
-    required:true
+  category: {
+    type: String,
+    default: "Ayurvedic"
   },
 
-  mrp:{
-    type:Number,
-    required:true
+  brand: {
+    type: String,
+    default: "MEDAYUR"
   },
 
-  image:{
-    type:String,
-    required:true
+  image: {
+    type: String,
+    required: true
   },
 
-  category:{
-    type:String
+  gallery: {
+    type: [String],
+    default: []
   },
 
-  brand:{
-    type:String,
-    default:"MEDAYUR"
+  price: {
+    type: Number,
+    required: true
   },
 
-  description:{
-    type:String
+  oldPrice: {
+    type: Number,
+    default: 0
   },
 
-  benefits:[String],
-
-  stock:{
-    type:Number,
-    default:0
+  mrp: {
+    type: Number,
+    default: 0
   },
 
-  rating:{
-    type:Number,
-    default:5
+  description: {
+    type: String,
+    default: ""
   },
 
-  soldOut:{
-    type:Boolean,
-    default:false
+  ingredients: {
+    type: [String],
+    default: []
   },
 
-  featured:{
-    type:Boolean,
-    default:false
+  benefits: {
+    type: [String],
+    default: []
+  },
+
+  usage: {
+    type: String,
+    default: ""
+  },
+
+  information: {
+    type: String,
+    default: ""
+  },
+
+  dosage: {
+    type: String,
+    default: ""
+  },
+
+  sideEffects: {
+    type: String,
+    default: ""
+  },
+
+  weight: {
+    type: String,
+    default: ""
+  },
+
+  quantity: {
+    type: String,
+    default: ""
+  },
+
+  stock: {
+    type: Number,
+    default: 0
+  },
+
+  rating: {
+    type: Number,
+    default: 5
+  },
+
+  reviews: {
+    type: Number,
+    default: 0
+  },
+
+  soldOut: {
+    type: Boolean,
+    default: false
+  },
+
+  featured: {
+    type: Boolean,
+    default: false
+  },
+
+  bestSeller: {
+    type: Boolean,
+    default: false
+  },
+
+  newArrival: {
+    type: Boolean,
+    default: false
+  },
+
+  isActive: {
+    type: Boolean,
+    default: true
   }
 
-},{timestamps:true});
+}, {
+  timestamps: true
+});
 
-module.exports = mongoose.model("Product",productSchema);
+module.exports = mongoose.model("Product", productSchema);

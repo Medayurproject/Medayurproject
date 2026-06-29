@@ -7,7 +7,8 @@ const Product = require("../models/Product");
 const getProducts = async (req, res) => {
   try {
 
-    const products = await Product.find().sort({
+    const products = await Product.find({ isActive: true }).sort({
+      featured: -1,
       createdAt: -1
     });
 
@@ -28,77 +29,125 @@ const getProducts = async (req, res) => {
 // CREATE PRODUCT
 // ===============================
 const createProduct = async (req, res) => {
+
   try {
 
     const {
       name,
-      price,
-      mrp,
-      image,
+      slug,
       category,
+      brand,
+      image,
+      gallery,
+      price,
+      oldPrice,
+      mrp,
       description,
+      ingredients,
+      benefits,
+      usage,
+      information,
+      dosage,
+      sideEffects,
+      weight,
+      quantity,
       stock,
       rating,
-      benefits
+      reviews,
+      featured,
+      bestSeller,
+      newArrival
     } = req.body;
 
 
-    // Validation
-    if (!name || !price || !mrp || !image) {
+    if (!name || !price || !image) {
       return res.status(400).json({
         success: false,
-        message: "Required fields missing"
+        message: "Name, Price and Image are required."
       });
     }
-
-
-    // Sold Out Check
-    let soldOut = false;
-
-    if (!stock || stock <= 0) {
-      soldOut = true;
-    }
-
 
     const product = await Product.create({
 
       name: name.trim(),
 
-      price: Number(price),
+      slug,
 
-      mrp: Number(mrp),
+      category: category || "Ayurvedic",
+
+      brand: brand || "MEDAYUR",
 
       image,
 
-      category: category || "General",
+      gallery: gallery || [],
+
+      price: Number(price),
+
+      oldPrice: Number(oldPrice || 0),
+
+      mrp: Number(mrp || oldPrice || price),
 
       description: description || "",
 
-      stock: stock || 0,
-
-      rating: rating || 5,
+      ingredients: ingredients || [],
 
       benefits: benefits || [],
 
-      soldOut
+      usage: usage || "",
+
+      information: information || "",
+
+      dosage: dosage || "",
+
+      sideEffects: sideEffects || "",
+
+      weight: weight || "",
+
+      quantity: quantity || "",
+
+      stock: Number(stock || 0),
+
+      soldOut: Number(stock || 0) <= 0,
+
+      rating: Number(rating || 5),
+
+      reviews: Number(reviews || 0),
+
+      featured: featured || false,
+
+      bestSeller: bestSeller || false,
+
+      newArrival: newArrival || false,
+
+      isActive: true
 
     });
 
 
     res.status(201).json({
+
       success: true,
+
       message: "Product Created Successfully",
+
       product
-    });
 
-  } catch (error) {
-
-    res.status(500).json({
-      success: false,
-      message: error.message
     });
 
   }
+
+  catch (error) {
+
+    res.status(500).json({
+
+      success: false,
+
+      message: error.message
+
+    });
+
+  }
+
 };
 
 
@@ -106,44 +155,62 @@ const createProduct = async (req, res) => {
 // UPDATE PRODUCT
 // ===============================
 const updateProduct = async (req, res) => {
+
   try {
 
-    const product = await Product.findById(req.params.id);
-
-    if (!product) {
-      return res.status(404).json({
-        success: false,
-        message: "Product Not Found"
-      });
+    if (req.body.stock !== undefined) {
+      req.body.soldOut = Number(req.body.stock) <= 0;
     }
 
+    const product = await Product.findByIdAndUpdate(
 
-    const updatedProduct =
-      await Product.findByIdAndUpdate(
+      req.params.id,
 
-        req.params.id,
+      req.body,
 
-        req.body,
+      {
+        new: true,
+        runValidators: true
+      }
 
-        { new: true }
+    );
 
-      );
+    if (!product) {
 
+      return res.status(404).json({
+
+        success: false,
+
+        message: "Product Not Found"
+
+      });
+
+    }
 
     res.status(200).json({
+
       success: true,
+
       message: "Product Updated Successfully",
-      updatedProduct
-    });
 
-  } catch (error) {
+      product
 
-    res.status(500).json({
-      success: false,
-      message: error.message
     });
 
   }
+
+  catch (error) {
+
+    res.status(500).json({
+
+      success: false,
+
+      message: error.message
+
+    });
+
+  }
+
 };
 
 
@@ -151,43 +218,57 @@ const updateProduct = async (req, res) => {
 // DELETE PRODUCT
 // ===============================
 const deleteProduct = async (req, res) => {
+
   try {
 
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findByIdAndDelete(req.params.id);
 
     if (!product) {
+
       return res.status(404).json({
+
         success: false,
+
         message: "Product Not Found"
+
       });
+
     }
 
-
-    await Product.findByIdAndDelete(
-      req.params.id
-    );
-
-
     res.status(200).json({
+
       success: true,
+
       message: "Product Deleted Successfully"
-    });
 
-  } catch (error) {
-
-    res.status(500).json({
-      success: false,
-      message: error.message
     });
 
   }
+
+  catch (error) {
+
+    res.status(500).json({
+
+      success: false,
+
+      message: error.message
+
+    });
+
+  }
+
 };
 
 
-// EXPORT
+// ===============================
 module.exports = {
+
   getProducts,
+
   createProduct,
+
   updateProduct,
+
   deleteProduct
+
 };
